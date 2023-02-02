@@ -43,6 +43,24 @@ struct CalculationView: View {
     var tipPercentage: Double {
         return Double(selectedTipPercentage) / 100
     }
+    
+    // Calculates the total with the tip
+     var totalWithTip: Double? {
+         
+         // Is the bill amount nil, or an actual numeric value?
+         guard let amount = billAmount else {
+             return nil
+         }
+         
+         // Calculate the tip dollar amount
+         let tipAmount = amount * tipPercentage
+         
+         // Calculate bill total, including the tip
+         let billTotal = amount + tipAmount
+         
+         // Return total bill
+         return billTotal
+     }
         
     // Shows the user interface
     var body: some View {
