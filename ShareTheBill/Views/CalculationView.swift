@@ -11,10 +11,28 @@ struct CalculationView: View {
     
     // MARK: Stored properties
     
+    // How much was the bill?
+    @State var providedBillAmount = ""
+    
     // Common tip percentages
     let tipPercentages = [10, 15, 20, 25, 0]
     
     // MARK: Computed properties
+    
+    // Handles conversion of text input to an optional Double
+    var billAmount: Double? {
+        
+        guard let amountAsDouble = Double(providedBillAmount) else {
+            // Text input was not a numeric value, so we don't know
+            // what the bill amount should be
+            return nil
+        }
+        
+        // Text input was a numeric value, so return it
+        return amountAsDouble
+    }
+        
+    // Shows the user interface
     var body: some View {
         
         VStack(spacing: 0) {
@@ -32,7 +50,8 @@ struct CalculationView: View {
                 HStack(spacing: 5) {
                     Text("$")
                     
-                    TextField("100.00", text: Binding.constant(""))   // Temporary constant binding
+                    TextField("100.00", text: $providedBillAmount)  // Now a "live" binding
+                                                                    // connected to providedBillAmount
                 }
                 .padding()
 
