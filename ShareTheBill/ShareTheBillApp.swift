@@ -9,10 +9,14 @@ import SwiftUI
 
 @main
 struct ShareTheBillApp: App {
+    
+    //where the data is created
+    @State var history: [Result] = []
+    
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                CalculationView()
+                CalculationView(history: $history)
             }
         }
     }
