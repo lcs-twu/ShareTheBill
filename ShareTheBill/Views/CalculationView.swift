@@ -45,22 +45,22 @@ struct CalculationView: View {
     }
     
     // Calculates the total with the tip
-     var totalWithTip: Double? {
-         
-         // Is the bill amount nil, or an actual numeric value?
-         guard let amount = billAmount else {
-             return nil
-         }
-         
-         // Calculate the tip dollar amount
-         let tipAmount = amount * tipPercentage
-         
-         // Calculate bill total, including the tip
-         let billTotal = amount + tipAmount
-         
-         // Return total bill
-         return billTotal
-     }
+    var totalWithTip: Double? {
+        
+        // Is the bill amount nil, or an actual numeric value?
+        guard let amount = billAmount else {
+            return nil
+        }
+        
+        // Calculate the tip dollar amount
+        let tipAmount = amount * tipPercentage
+        
+        // Calculate bill total, including the tip
+        let billTotal = amount + tipAmount
+        
+        // Return total bill
+        return billTotal
+    }
     
     // Formats total with tip, or shows an error
     var totalWithTipFormatted: String {
@@ -75,12 +75,12 @@ struct CalculationView: View {
         return total.formatted(.number.precision(.fractionLength(2)))
         
     }
-        
+    
     // Shows the user interface
     var body: some View {
         
         VStack(spacing: 0) {
-
+            
             Group {
                 
                 HStack {
@@ -90,15 +90,15 @@ struct CalculationView: View {
                     Spacer()
                 }
                 .padding(.horizontal)
-
+                
                 HStack(spacing: 5) {
                     Text("$")
                     
                     TextField("100.00", text: $providedBillAmount)  // Now a "live" binding
-                                                                    // connected to providedBillAmount
+                    // connected to providedBillAmount
                 }
                 .padding()
-
+                
             }
             
             Group {
@@ -110,10 +110,10 @@ struct CalculationView: View {
                     Spacer()
                 }
                 .padding(.horizontal)
-
+                
                 Picker("Tip Percentage",
                        selection: $selectedTipPercentage) { // Now a "live" binding
-                                                            // connected to "selectedTipPercentage"
+                    // connected to "selectedTipPercentage"
                     
                     // tipPercentages array does not conform to Identifiable
                     // However, by using the parameter "id" with argument "\.self"
@@ -124,9 +124,9 @@ struct CalculationView: View {
                             .tag(currentPercentage)
                     }
                 }
-                .pickerStyle(.segmented)
-                .padding()
-
+                       .pickerStyle(.segmented)
+                       .padding()
+                
             }
             
             Group {
@@ -138,7 +138,7 @@ struct CalculationView: View {
                     Spacer()
                 }
                 .padding(.horizontal)
-
+                
                 HStack(spacing: 5) {
                     Text("$")
                     
@@ -159,7 +159,7 @@ struct CalculationView: View {
                     Spacer()
                 }
                 .padding(.horizontal)
-
+                
                 // Now a "live" binding connected to "peopleCount"
                 Stepper("\(peopleCount)",
                         value: $peopleCount,
@@ -177,7 +177,7 @@ struct CalculationView: View {
                     Spacer()
                 }
                 .padding(.horizontal)
-
+                
                 HStack(spacing: 5) {
                     Text("$")
                     
@@ -186,7 +186,7 @@ struct CalculationView: View {
                     Spacer()
                 }
                 .padding()
-
+                
             }
             
             Spacer()
