@@ -76,6 +76,28 @@ struct CalculationView: View {
         
     }
     
+    // How much does each person pay?
+    var amountEachPersonPays: Double? {
+        
+        // Could the total with tip be calculated?
+        // Or did that fail because the bill amount input was nonsense?
+        guard let total = totalWithTip else {
+            return nil
+        }
+        
+        // We have a valid total that includes tip
+        // Now find out how much each person pays...
+        // NOTE: total is now a Double that is guaranteed to not contain nil.
+        // HOWEVER: We must convert "peopleCount" from an Int to a Double since
+        //          we cannot divide a Double (total) by an Int (peopleCount)
+        let amountPerPerson = total / Double(peopleCount)
+        
+        // Return the amount per person
+        return amountPerPerson
+
+    }
+    
+    
     // Shows the user interface
     var body: some View {
         
