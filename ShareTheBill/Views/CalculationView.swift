@@ -97,6 +97,20 @@ struct CalculationView: View {
 
     }
     
+    // Format the amount each person pays, or show an error
+    var amountEachPersonPaysFormatted: String {
+        
+        // Could the amount each person pays be calculated?
+        // Or did that fail because earlier input was not valid?
+        guard let amount = amountEachPersonPays else {
+            return "Cannot be determined..."
+        }
+        
+        // It could be calculated, so format it nicely
+        return amount.formatted(.number.precision(.fractionLength(2)))
+
+    }
+    
     
     // Shows the user interface
     var body: some View {
@@ -203,7 +217,7 @@ struct CalculationView: View {
                 HStack(spacing: 5) {
                     Text("$")
                     
-                    Text("60.00")
+                    Text(amountEachPersonPaysFormatted)
                     
                     Spacer()
                 }
