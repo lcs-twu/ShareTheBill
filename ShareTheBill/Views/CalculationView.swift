@@ -83,6 +83,21 @@ struct CalculationView: View {
                 
             }
             
+            Group {
+                
+                HStack {
+                    Text("How many people?")
+                        .font(.headline.smallCaps())
+                    
+                    Spacer()
+                }
+                .padding(.horizontal)
+
+                Stepper("2", value: Binding.constant(2), in: 0...20)
+                .padding()
+                
+            }
+            
             
             Spacer()
         }
