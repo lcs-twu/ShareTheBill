@@ -18,9 +18,11 @@ struct ShareTheBillApp: App {
             TabView{
                 CalculationView(history: $history)
                     .tabItem{
+                        Image(systemName: "rectangle.split.2x2.fill")
                         Text("calculate")
                     }
                     .tabItem{
+                        Image(systemName: "clock.fill")
                         Text("Reviews")
                     }
                 historyView(history: $history)

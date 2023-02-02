@@ -28,6 +28,6 @@ struct historyView: View {
 
 struct historyView_Previews: PreviewProvider {
     static var previews: some View {
-        historyView()
+        historyView(history: @Binding.constant(historyForPreviews))
     }
 }
