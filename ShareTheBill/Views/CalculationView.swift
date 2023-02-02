@@ -23,6 +23,10 @@ struct CalculationView: View {
     // How many people are splitting this bill?
     @State var peopleCount = 2
     
+    // Stores the history of tip calculations
+    // NOTE: Temporarily starts with one prior result to check layout
+    @State var history: [Result] = [exampleResultForPreviews]
+    
     // MARK: Computed properties
     
     // Handles conversion of text input to an optional Double
@@ -225,7 +229,17 @@ struct CalculationView: View {
                 
             }
             
-            Spacer()
+            Group {
+                
+                Text("History")
+                    .font(.headline.smallCaps())
+                    .padding()
+                
+                List(history) { somePriorResult in
+                    ResultView(priorResult: somePriorResult)
+                }
+
+            }
         }
         .padding(.top, 10)
         .navigationTitle("Share the Bill")

@@ -38,7 +38,7 @@ struct ResultView: View {
                 Text("")
             }
             .font(Font.custom("Courier New",
-                              size: 18.0,
+                              size: 14.0,
                               relativeTo: .body))
             .bold()
 
@@ -68,7 +68,7 @@ struct ResultView: View {
                 Text("===========")
             }
             .font(Font.custom("Courier New",
-                              size: 18.0,
+                              size: 14,
                               relativeTo: .body))
 
         }
