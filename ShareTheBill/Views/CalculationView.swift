@@ -32,7 +32,7 @@ struct CalculationView: View {
                 HStack(spacing: 5) {
                     Text("$")
                     
-                    TextField("0.00", text: Binding.constant(""))   // Temporary constant binding
+                    TextField("100.00", text: Binding.constant(""))   // Temporary constant binding
                 }
                 .padding()
 
@@ -76,7 +76,7 @@ struct CalculationView: View {
                 HStack(spacing: 5) {
                     Text("$")
                     
-                    Text("0.00")
+                    Text("120.00")
                     
                     Spacer()
                 }
@@ -112,7 +112,7 @@ struct CalculationView: View {
                 HStack(spacing: 5) {
                     Text("$")
                     
-                    Text("0.00")
+                    Text("60.00")
                     
                     Spacer()
                 }
