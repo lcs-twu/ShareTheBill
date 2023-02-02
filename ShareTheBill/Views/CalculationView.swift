@@ -11,26 +11,57 @@ struct CalculationView: View {
     
     // MARK: Stored properties
     
+    // Common tip percentages
+    let tipPercentages = [10, 15, 20, 25, 0]
+    
     // MARK: Computed properties
     var body: some View {
         
         VStack(spacing: 0) {
-            
-            HStack {
-                Text("Bill Amount")
-                    .font(.headline.smallCaps())
-                
-                Spacer()
-            }
-            .padding(.horizontal)
 
-            HStack(spacing: 0) {
-                Text("$")
+            Group {
                 
-                TextField("0.00", text: .constant(""))
+                HStack {
+                    Text("Bill Amount")
+                        .font(.headline.smallCaps())
+                    
+                    Spacer()
+                }
+                .padding(.horizontal)
+
+                HStack(spacing: 0) {
+                    Text("$")
+                    
+                    TextField("0.00", text: Binding.constant(""))   // Temporary constant binding
+                }
+                .padding()
+
             }
-            .padding()
             
+            Group {
+                
+                HStack {
+                    Text("Tip Percentage")
+                        .font(.headline.smallCaps())
+                    
+                    Spacer()
+                }
+                .padding(.horizontal)
+
+                Picker("Tip Percentage", selection: Binding.constant(2)) { // Temporary constant binding
+                    // tipPercentages array does not conform to Identifiable
+                    // However, by using the parameter "id" with argument "\.self"
+                    // we can "promise" SwiftUI that the values in the array will
+                    // all be unique.
+                    ForEach(tipPercentages, id: \.self) { currentPercentage in
+                        Text("\(currentPercentage)%")
+                    }
+                }
+                .pickerStyle(.segmented)
+                .padding()
+
+            }
+
             Spacer()
         }
         .padding(.top, 10)
