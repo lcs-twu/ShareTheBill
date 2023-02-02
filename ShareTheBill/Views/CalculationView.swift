@@ -48,13 +48,14 @@ struct CalculationView: View {
                 }
                 .padding(.horizontal)
 
-                Picker("Tip Percentage", selection: Binding.constant(2)) { // Temporary constant binding
+                Picker("Tip Percentage", selection: Binding.constant(20)) { // Temporary constant binding
                     // tipPercentages array does not conform to Identifiable
                     // However, by using the parameter "id" with argument "\.self"
                     // we can "promise" SwiftUI that the values in the array will
                     // all be unique.
                     ForEach(tipPercentages, id: \.self) { currentPercentage in
                         Text("\(currentPercentage)%")
+                            .tag(currentPercentage)
                     }
                 }
                 .pickerStyle(.segmented)
