@@ -98,6 +98,26 @@ struct CalculationView: View {
                 
             }
             
+            Group {
+                
+                HStack {
+                    Text("Each person Pays...")
+                        .font(.headline.smallCaps())
+                    
+                    Spacer()
+                }
+                .padding(.horizontal)
+
+                HStack(spacing: 5) {
+                    Text("$")
+                    
+                    Text("0.00")
+                    
+                    Spacer()
+                }
+                .padding()
+
+            }
             
             Spacer()
         }
