@@ -17,6 +17,9 @@ struct CalculationView: View {
     // Common tip percentages
     let tipPercentages = [10, 15, 20, 25, 0]
     
+    // What tip percentage was selected?
+    @State var selectedTipPercentage = 25
+    
     // MARK: Computed properties
     
     // Handles conversion of text input to an optional Double
@@ -67,7 +70,10 @@ struct CalculationView: View {
                 }
                 .padding(.horizontal)
 
-                Picker("Tip Percentage", selection: Binding.constant(20)) { // Temporary constant binding
+                Picker("Tip Percentage",
+                       selection: $selectedTipPercentage) { // Now a "live" binding
+                                                            // connected to "selectedTipPercentage"
+                    
                     // tipPercentages array does not conform to Identifiable
                     // However, by using the parameter "id" with argument "\.self"
                     // we can "promise" SwiftUI that the values in the array will
