@@ -20,6 +20,9 @@ struct CalculationView: View {
     // What tip percentage was selected?
     @State var selectedTipPercentage = 25
     
+    // How many people are splitting this bill?
+    @State var peopleCount = 2
+    
     // MARK: Computed properties
     
     // Handles conversion of text input to an optional Double
@@ -119,7 +122,10 @@ struct CalculationView: View {
                 }
                 .padding(.horizontal)
 
-                Stepper("2", value: Binding.constant(2), in: 0...20)
+                // Now a "live" binding connected to "peopleCount"
+                Stepper("\(peopleCount)",
+                        value: $peopleCount,
+                        in: 2...20)
                 .padding()
                 
             }
