@@ -61,6 +61,20 @@ struct CalculationView: View {
          // Return total bill
          return billTotal
      }
+    
+    // Formats total with tip, or shows an error
+    var totalWithTipFormatted: String {
+        
+        // Could the total with tip be calculated?
+        // Or did that fail because the bill amount input was nonsense?
+        guard let total = totalWithTip else {
+            return "Cannot be calculated..."
+        }
+        
+        // It could be calculated, so format it nicely
+        return total.formatted(.number.precision(.fractionLength(2)))
+        
+    }
         
     // Shows the user interface
     var body: some View {
@@ -128,7 +142,7 @@ struct CalculationView: View {
                 HStack(spacing: 5) {
                     Text("$")
                     
-                    Text("120.00")
+                    Text(totalWithTipFormatted)
                     
                     Spacer()
                 }
