@@ -29,7 +29,7 @@ struct CalculationView: View {
                 }
                 .padding(.horizontal)
 
-                HStack(spacing: 0) {
+                HStack(spacing: 5) {
                     Text("$")
                     
                     TextField("0.00", text: Binding.constant(""))   // Temporary constant binding
@@ -61,7 +61,29 @@ struct CalculationView: View {
                 .padding()
 
             }
+            
+            Group {
+                
+                HStack {
+                    Text("Total with Tip")
+                        .font(.headline.smallCaps())
+                    
+                    Spacer()
+                }
+                .padding(.horizontal)
 
+                HStack(spacing: 5) {
+                    Text("$")
+                    
+                    Text("0.00")
+                    
+                    Spacer()
+                }
+                .padding()
+                
+            }
+            
+            
             Spacer()
         }
         .padding(.top, 10)
