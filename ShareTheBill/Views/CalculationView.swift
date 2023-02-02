@@ -8,10 +8,32 @@
 import SwiftUI
 
 struct CalculationView: View {
+    
+    // MARK: Stored properties
+    
+    // MARK: Computed properties
     var body: some View {
-        VStack {
-            Text("Calculation interface goes here, soon")
+        
+        VStack(spacing: 0) {
+            
+            HStack {
+                Text("Bill Amount")
+                    .font(.headline.smallCaps())
+                
+                Spacer()
+            }
+            .padding(.horizontal)
+
+            HStack(spacing: 0) {
+                Text("$")
+                
+                TextField("0.00", text: .constant(""))
+            }
+            .padding()
+            
+            Spacer()
         }
+        .padding(.top, 10)
         .navigationTitle("Share the Bill")
     }
 }
