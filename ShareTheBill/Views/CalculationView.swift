@@ -264,7 +264,7 @@ struct CalculationView: View {
                     .font(.headline.smallCaps())
                     .padding()
                 
-                List(history) { somePriorResult in
+                List(history.reversed()) { somePriorResult in
                     ResultView(priorResult: somePriorResult)
                 }
 
