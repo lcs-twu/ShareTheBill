@@ -15,8 +15,15 @@ struct ShareTheBillApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationView {
+            TabView{
                 CalculationView(history: $history)
+                    .tabItem{
+                        Text("calculate")
+                    }
+                    .tabItem{
+                        Text("Reviews")
+                    }
+                historyView(history: $history)
             }
         }
     }
