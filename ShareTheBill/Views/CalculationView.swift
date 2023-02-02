@@ -24,8 +24,7 @@ struct CalculationView: View {
     @State var peopleCount = 2
     
     // Stores the history of tip calculations
-    // NOTE: Temporarily starts with one prior result to check layout
-    @State var history: [Result] = [exampleResultForPreviews]
+    @State var history: [Result] = []   // Begins as empty list
     
     // MARK: Computed properties
     
@@ -228,6 +227,36 @@ struct CalculationView: View {
                 .padding()
                 
             }
+            
+            Button(action: {
+                
+                // Create a string version of the bill amount
+                guard let amount = billAmount else {
+                    return
+                }
+                let amountFormatted = String( amount.formatted(.number.precision(.fractionLength(2))))
+                
+                // Create a string version of the percentage
+                let percentage = String(selectedTipPercentage)
+                
+                // Create a string version of the people count
+                let people = String(peopleCount)
+                
+                // Create the prior result, all put together into an instance of Result
+                let priorResult = Result(billAmount: amountFormatted,
+                                         percentage: percentage,
+                                         totalWithTip: totalWithTipFormatted,
+                                         peopleCount: people,
+                                         amountPerPerson: amountEachPersonPaysFormatted)
+                
+                // Save the prior result to the history
+                history.append(priorResult)
+                
+            }, label: {
+                Text("Save")
+                    .font(.headline.smallCaps())
+            })
+            .buttonStyle(.bordered)
             
             Group {
                 
