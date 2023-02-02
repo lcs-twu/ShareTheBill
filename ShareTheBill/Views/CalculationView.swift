@@ -9,12 +9,17 @@ import SwiftUI
 
 struct CalculationView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Calculation interface goes here, soon")
+        }
+        .navigationTitle("Share the Bill")
     }
 }
 
 struct CalculationView_Previews: PreviewProvider {
     static var previews: some View {
-        CalculationView()
+        NavigationView {
+            CalculationView()
+        }
     }
 }

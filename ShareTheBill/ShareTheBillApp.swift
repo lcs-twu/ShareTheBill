@@ -11,7 +11,9 @@ import SwiftUI
 struct ShareTheBillApp: App {
     var body: some Scene {
         WindowGroup {
-            CalculationView()
+            NavigationView {
+                CalculationView()
+            }
         }
     }
 }
