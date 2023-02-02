@@ -37,6 +37,12 @@ struct CalculationView: View {
         // Text input was a numeric value, so return it
         return amountAsDouble
     }
+    
+    // Converts selected tip percentage to a Double and a value between 0 and 1
+    // e.g.: 25 becomes 25.0 then after division by 100 becomes 0.25
+    var tipPercentage: Double {
+        return Double(selectedTipPercentage) / 100
+    }
         
     // Shows the user interface
     var body: some View {
